@@ -1,0 +1,151 @@
+BUTTONS = {
+    0:  'PS4_PS',
+    1:  'PS4_SHARE',
+    2:  'PS4_OPTIONS',
+    3:  'PS4_R1',
+    4:  'PS4_R2',
+    5:  'PS4_R3',
+    6:  'PS4_L1',
+    7:  'PS4_L2',
+    8:  'PS4_L3',
+    9:  'PS4_RX',
+    10: 'PS4_RY',
+    11: 'PS4_LX',
+    12: 'PS4_LY',
+    13: 'PS4_UP',
+    14: 'PS4_DOWN',
+    15: 'PS4_LEFT',
+    16: 'PS4_RIGHT',
+    17: 'PS4_TRIANGLE',
+    18: 'PS4_CIRCLE',
+    19: 'PS4_CROSS',
+    20: 'PS4_SQUARE',
+    21: 'PS4_ACCX',
+    22: 'PS4_ACCY',
+    23: 'PS4_ACCZ',
+    24: 'PS4_GYROX',
+    25: 'PS4_GYROY',
+    26: 'PS4_GYROZ',
+    27: 'PS4_TOUCH',
+    28: 'PS4_TOUCHX',
+    29: 'PS4_TOUCHY',
+    30: 'TRACE_1',
+    31: 'TRACE_2',
+    32: 'TRACE_3',
+    33: 'TRACE_4',
+    34: 'TRACE_5',
+    35: 'TRACE_6',
+    '0':  'PS4_PS',
+    '1':  'PS4_SHARE',
+    '2':  'PS4_OPTIONS',
+    '3':  'PS4_R1',
+    '4':  'PS4_R2',
+    '5':  'PS4_R3',
+    '6':  'PS4_L1',
+    '7':  'PS4_L2',
+    '8':  'PS4_L3',
+    '9':  'PS4_RX',
+    '10': 'PS4_RY',
+    '11': 'PS4_LX',
+    '12': 'PS4_LY',
+    '13': 'PS4_UP',
+    '14': 'PS4_DOWN',
+    '15': 'PS4_LEFT',
+    '16': 'PS4_RIGHT',
+    '17': 'PS4_TRIANGLE',
+    '18': 'PS4_CIRCLE',
+    '19': 'PS4_CROSS',
+    '20': 'PS4_SQUARE',
+    '21': 'PS4_ACCX',
+    '22': 'PS4_ACCY',
+    '23': 'PS4_ACCZ',
+    '24': 'PS4_GYROX',
+    '25': 'PS4_GYROY',
+    '26': 'PS4_GYROZ',
+    '27': 'PS4_TOUCH',
+    '28': 'PS4_TOUCHX',
+    '29': 'PS4_TOUCHY',
+    '30': 'TRACE_1',
+    '31': 'TRACE_2',
+    '32': 'TRACE_3',
+    '33': 'TRACE_4',
+    '34': 'TRACE_5',
+    '35': 'TRACE_6',
+    '101': 'DZ_CIRCLE',
+    '-1': 'ALL_REMAPS'
+}
+
+LEDS = {
+    '0': 'LED_1',
+    '1': 'LED_2',
+    '2': 'LED_3',
+    '3': 'LED_4'
+}
+
+RUMBLE = {
+    '0': 'RUMBLE_A',
+    '1': 'RUMBLE_B',
+    '2': 'RUMBLE_RT',
+    '3': 'RUMBLE_LT',
+}
+
+PVARS = {
+    '-32768': 'SPVAR_1',
+    '-32767': 'SPVAR_2',
+    '-32766': 'SPVAR_3',
+    '-32765': 'SPVAR_4',
+    '-32764': 'SPVAR_5',
+    '-32763': 'SPVAR_6',
+    '-32762': 'SPVAR_7',
+    '-32761': 'SPVAR_8',
+    '-32760': 'SPVAR_9',
+    '-32759': 'SPVAR_10',
+    '-32758': 'SPVAR_11',
+    '-32757': 'SPVAR_12',
+    '-32756': 'SPVAR_13',
+    '-32755': 'SPVAR_14',
+    '-32754': 'SPVAR_15',
+    '-32753': 'SPVAR_16',
+    '0': 'PVAR_1',
+    '1': 'PVAR_2',
+    '2': 'PVAR_3',
+    '3': 'PVAR_4',
+    '4': 'PVAR_5',
+    '5': 'PVAR_6',
+    '6': 'PVAR_7',
+    '7': 'PVAR_8',
+    '8': 'PVAR_9',
+    '9': 'PVAR_10',
+    '10': 'PVAR_11',
+    '11': 'PVAR_12',
+    '12': 'PVAR_13',
+    '13': 'PVAR_14',
+    '14': 'PVAR_15',
+    '15': 'PVAR_16'
+}
+
+PS4 = {
+    '1': 'PS4T_P1',
+    '2': 'PS4T_P1X',
+    '2': 'PS4T_P1Y',
+    '10': 'PS4T_P2',
+    '20': 'PS4T_P2X',
+    '30': 'PS4T_P2Y'
+}
+
+PIO = {
+    '1': 'PIO_PS3',
+    '2': 'PIO_XB360',
+    '3': 'PIO_WII',
+    '4': 'PIO_PS4',
+    '5': 'PIO_XB1'
+}
+
+SENS = {
+    '0': 'NOT_USE',
+}
+
+TRUTHS = {
+    '0': 'FALSE',
+    '1': 'TRUE'
+}
