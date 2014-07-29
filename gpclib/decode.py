@@ -611,6 +611,7 @@ class GPCDecoder(object):
             for group in groups.values():
                 self.fix_combo_calls(group)
                 self.combos[idx].groups[group.address] = group
+            self.fix_combos(self.combos[idx])
 
     def flatten_combo(self, idx, block):
         groups = {}
