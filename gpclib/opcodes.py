@@ -637,6 +637,27 @@ class GetBatteryOpCode(OpCode):
     _name = 'gbatt'
     _pushes = 1
     _fmt_decompile = 'get_battery()'
+class NopOpCode(OpCode):
+    _op = 0x4F
+    _name = 'nop'
+    _fmt_decompile = 'NOP()'   
+class GetPS4AuthTimeOutOpCode(OpCode):
+    _op = 0x50
+    _name = 'GetPS4AuthTimeout'
+    _pushes = 1
+    _fmt_decompile = 'ps4_authtimeout()'
+class PS4OutReConnOpCode(OpCode):
+    _op = 0x51
+    _name = 'op_reconn'
+    _fmt_decompile = 'output_reconnection()'     
+class GetCtrlBtnOpCode(OpCode):
+    _op = 0x52
+    _name = 'GetCtrlBtnOpCode'
+    _pushes = 1
+    _fmt_decompile = 'get_ctrlbutton()'    
+
+ 
+
 
 missing = {
 }
@@ -720,5 +741,10 @@ opcodes = [
     ClearBitArgumentOpCode,
     SetBitsArgumentOpCode,
     Ps4TouchOpCode,
-    GetBatteryOpCode
+    GetBatteryOpCode,
+    NopOpCode,
+    GetPS4AuthTimeOutOpCode,
+    PS4OutReConnOpCode,
+    GetCtrlBtnOpCode
+    
 ]
