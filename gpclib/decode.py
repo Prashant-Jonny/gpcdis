@@ -73,6 +73,7 @@ class GPCFunctionalGroup(object):
     _opens_block = False
     _closes_block = False
     next = None
+    complex = False
 
     def __init__(self, address, operations):
         self.address = address
@@ -85,6 +86,15 @@ class GPCFunctionalGroup(object):
             if not isinstance(source, GPCStackSource):
                 sinks.append(source)
         return sinks
+
+    def simple(self):
+        sorted_ops = sorted(self.operations.items(), key=lambda i: i[0], reverse=True)
+        if self.complex:
+            return False
+        for idx, (addr, op) in enumerate(sorted_ops):
+            if not op._simple:
+                return False
+        return True
 
     def resolve(self):
         stack = []
@@ -424,6 +434,7 @@ class GPCDecoder(object):
         self.maps = None
         self.combos = None
         self.combo_count = 0
+        self.t0 = None
         self.variables = {}
 
     def full_decode(self):
@@ -440,6 +451,9 @@ class GPCDecoder(object):
         self.split_combos()
         self.resolve_combos()
         self.fix_run_combo()
+
+    def init_decode(self):
+        self.renormalize_init()
 
     def decode(self, address):
         if address in self.operations:
@@ -554,6 +568,21 @@ class GPCDecoder(object):
         if not self.init.operations:
             self.subs.pop(self.init.address)
             self.init = None
+
+    def renormalize_init(self):
+        if not self.init: return
+        self.alloc_values = {}
+        for group in sorted(self.init.groups.values(), key=lambda g: g.address):
+            if not hasattr(group.final_sink, 'operation'): continue
+            if not group.simple(): break
+            if group.final_sink.operation._name == 'pop':
+                var = group.final_sink.operation.arguments[0]
+                self.alloc_values[var] = group.final_sink.decompile(self)
+                self.init.groups.pop(group.address)
+            if group.final_sink.operation._name == 'T0':
+                self.t0 = group
+                self.init.groups.pop(group.address)
+        self.init.resolve()
 
     def resolve(self):
         for sub in self.subs.values():
@@ -684,8 +713,11 @@ class GPCDecoder(object):
                             group.final_sink = GPCFakeStackSink('combo_restart(combo{0})'.format(combo_index))
                         else:
                             group.final_sink = GPCFakeStackSink('combo_stop(combo{0})'.format(combo_index))
+                        group.complex = True
                         group.next.final_sink = GPCFakeStackSink('')
+                        group.next.complex = True
                         group.next.next.final_sink = GPCFakeStackSink('')
+                        group.next.next.complex = True
                     elif op1valid:
                         group.final_sink = GPCFakeStackSink('combo_run(combo{0})'.format(combo_index))
                 for source in group.final_sink.all_sources():

@@ -17,6 +17,7 @@ if __name__ == '__main__':
     try:
         decoder.full_decode()
         decoder.combo_decode()
+        decoder.init_decode()
     except ValueError as e:
         print e
 
@@ -42,7 +43,15 @@ if __name__ == '__main__':
             if count > 1:
                 lines.append('int v{0}[{1}];'.format(index, count))
             else:
-                lines.append('int v{0};'.format(index))
+                if decoder.alloc_values.has_key(index):
+                    lines.append('int {0};'.format(decoder.alloc_values[index]))
+                else:
+                    lines.append('int v{0};'.format(index))
+        lines.append('')
+
+    if decoder.t0:
+        lines.append('// titan only instruction to prevent operation on cronus')
+        lines.append('{0};'.format(decoder.t0.final_sink.decompile(decoder)));
         lines.append('')
 
     lines.append('// main segment')

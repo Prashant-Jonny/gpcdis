@@ -16,6 +16,7 @@ class OpCode(object):
     _loc = False
     _sub = False
     _bounded = False
+    _simple = False
     _pops = 0
     _pushes = 0
     address = 0
@@ -126,6 +127,7 @@ class RemapOpCode(TypicalOpCode):
     _arguments_fmt = '{0:0>2X} {1:0>2X}'
     _fmt_decompile = 'remap {0} -> {1}'
     _bounded = True
+    _simple = True
 class MainStartOpCode(OpCode):
     _op = 0x01
     _name = 'main'
@@ -134,6 +136,7 @@ class AllocateOpCode(HalfOpCode):
     _op = 0x03
     _name = 'alloc'
     _fmt_decompile = ''
+    _simple = True
 class PushOpCode(TypicalOpCode):
     _op = 0x04
     _name = 'push'
@@ -147,6 +150,7 @@ class PushImmediateOpCode(TypicalOpCode):
     _arguments_fmt = '0x{0:X}'
     _pushes = 1
     _fmt_decompile = '{0}'
+    _simple = True
 class PopOpCode(TypicalOpCode):
     _op = 0x06
     _name = 'pop'
@@ -155,6 +159,7 @@ class PopOpCode(TypicalOpCode):
     _fmt_decompile = '{0} = {1}'
     _variables = (True,)
     _bounded = True
+    _simple = True
 class WaitOpCode(TypicalOpCode):
     _op = 0x07
     _name = 'wait'
@@ -639,8 +644,9 @@ class GetBatteryOpCode(OpCode):
     _fmt_decompile = 'get_battery()'
 class NopOpCode(OpCode):
     _op = 0x4F
-    _name = 'nop'
-    _fmt_decompile = 'NOP()'
+    _name = 'T0'
+    _fmt_decompile = 'T0'
+    _simple = True
 class GetPS4AuthTimeOutOpCode(OpCode):
     _op = 0x50
     _name = 'GetPS4AuthTimeout'
