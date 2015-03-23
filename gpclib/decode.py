@@ -583,6 +583,9 @@ class GPCDecoder(object):
                 self.t0 = group
                 self.init.groups.pop(group.address)
         self.init.resolve()
+        if not self.init.root:
+            self.subs.pop(self.init.address)
+            self.init = None
 
     def resolve(self):
         for sub in self.subs.values():
